@@ -1,0 +1,11 @@
+#Header set Access-Control-Allow-Origin "*" 
+#Header set Access-Control-Allow-Methods "POST,GET" 
+#Header set Access-Control-Allow-Credentials "false" 
+
+RewriteEngine on
+RewriteCond $1 !^(index.php\assets|css|js|img|images|robots.txt)
+php_value max_input_vars 20000
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php?/$1 [L,QSA]
+
